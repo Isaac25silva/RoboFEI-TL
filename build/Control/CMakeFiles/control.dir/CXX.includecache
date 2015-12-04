@@ -12,7 +12,7 @@
 stdio.h
 -
 
-/home/luiz/RoboFEI-TL/Control/src/control.cpp
+/home/fei/RoboFEI-TL/Control/src/control.cpp
 stdio.h
 -
 termio.h
@@ -34,7 +34,7 @@ termios.h
 string.h
 -
 blackboard.h
-/home/luiz/RoboFEI-TL/Control/src/blackboard.h
+/home/fei/RoboFEI-TL/Control/src/blackboard.h
 time.h
 -
 assert.h
@@ -52,7 +52,7 @@ iostream
 math.h
 -
 ql.h
-/home/luiz/RoboFEI-TL/Control/src/ql.h
+/home/fei/RoboFEI-TL/Control/src/ql.h
 iterator
 -
 fstream
@@ -62,7 +62,7 @@ vector
 sys/time.h
 -
 
-/home/luiz/RoboFEI-TL/Control/src/ql.h
+/home/fei/RoboFEI-TL/Control/src/ql.h
 random
 -
 

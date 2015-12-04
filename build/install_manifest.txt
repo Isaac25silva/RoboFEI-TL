@@ -1,8 +1,8 @@
-/home/luiz/RoboFEI-TL/build/lib/libdxl_hal.so
-/home/luiz/RoboFEI-TL/build/lib/libdynamixel.so
-/home/luiz/RoboFEI-TL/build/lib/libblackboard.so
-/home/luiz/RoboFEI-TL/build/lib/liblibcontrol.so
-/home/luiz/RoboFEI-TL/build/bin/control
-/home/luiz/RoboFEI-TL/build/lib/libcomms.so
-/home/luiz/RoboFEI-TL/build/lib/libregisters.so
-/home/luiz/RoboFEI-TL/build/bin/imu
+/home/fei/RoboFEI-TL/build/lib/libdxl_hal.so
+/home/fei/RoboFEI-TL/build/lib/libdynamixel.so
+/home/fei/RoboFEI-TL/build/lib/libblackboard.so
+/home/fei/RoboFEI-TL/build/lib/liblibcontrol.so
+/home/fei/RoboFEI-TL/build/bin/control
+/home/fei/RoboFEI-TL/build/lib/libcomms.so
+/home/fei/RoboFEI-TL/build/lib/libregisters.so
+/home/fei/RoboFEI-TL/build/bin/imu

@@ -60,13 +60,19 @@ void filtro_imu(double 	&imu_med, double &imu_medy);
 
 void servo_funcionando();
 void saveTime(unsigned int Episodio, unsigned int tempo);
+
 /// Transfer LEarning
 float caso_para_Robo(float valor); //luiz
 float robo_para_caso(float valor); //luiz
 void similaridade(float AnguloQuadril, int estado); //luiz
-float caso_para_Robo(float valor); //luiz
-float robo_para_caso(float valor); //luiz
-void similaridade(float AnguloQuadril, int estado); //luiz
+int CASOS_USADOS=0;
+void le_arquivo_casos();
+char *extraiDado (char *buffer, char *temp);
+#define NUM_CASOS 400        
+double	CASOS_tetha1[NUM_CASOS];
+double CASOS_tetha2[NUM_CASOS];
+int CASOS_acao[NUM_CASOS];
+double CASOS_reward_acao[NUM_CASOS];
 
 
 //////global variables////////////////////////////////////////////////
@@ -211,10 +217,10 @@ while(1) //inicia o loop do programa main-------------------------------------
      srand (time(NULL));
 
 //--------------------Inicie o programa abrindo o arquivo ou aleatorio---------------------------------
-passos = openFiletoGetQvalueVector(Episodio);//abre o arquivo salvo e passa os valores para Qvalue
+//passos = openFiletoGetQvalueVector(Episodio);//abre o arquivo salvo e passa os valores para Qvalue
 //esta funcao inicializa os valores de Q com valores aleatorio
-//init_qvalues();
-//passos=0;
+init_qvalues();
+passos=0;
 //-----------------------------------------------------------------------------------------------------
 
 
@@ -661,7 +667,7 @@ void le_arquivo_casos()
 	
 	FILE *arq;
 	//arq=fopen("/home/fei/RoboFEI-TL/casos.txt", "r"); //
-	arq=fopen("/home/fei/RoboFEI-TL/casos.txt", "r");
+	arq=fopen("./casos.txt", "r");
 	fgets (linha, MAX_LEN, arq);
 	///cout<<"saiu1"<<endl;
 	

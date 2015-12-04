@@ -28,7 +28,7 @@ string
 um7/firmware_registers.h
 ../IMU/include/um7/um7/firmware_registers.h
 
-/home/luiz/RoboFEI-TL/IMU/src/registers.cpp
+/home/fei/RoboFEI-TL/IMU/src/registers.cpp
 um7/registers.h
-/home/luiz/RoboFEI-TL/IMU/src/um7/registers.h
+/home/fei/RoboFEI-TL/IMU/src/um7/registers.h
 

@@ -12,7 +12,7 @@
 stdio.h
 -
 
-/home/luiz/RoboFEI-TL/Control/src/Inverse_Kinematic.cpp
+/home/fei/RoboFEI-TL/Control/src/Inverse_Kinematic.cpp
 dynamixel.h
 -
 math.h
@@ -22,7 +22,7 @@ cmath
 unistd.h
 -
 
-/home/luiz/RoboFEI-TL/Control/src/andar.cpp
+/home/fei/RoboFEI-TL/Control/src/andar.cpp
 dynamixel.h
 -
 unistd.h
@@ -30,21 +30,21 @@ unistd.h
 blackboard.h
 -
 
-/home/luiz/RoboFEI-TL/Control/src/andar_de_lado.cpp
+/home/fei/RoboFEI-TL/Control/src/andar_de_lado.cpp
 dynamixel.h
-/home/luiz/RoboFEI-TL/Control/src/dynamixel.h
+/home/fei/RoboFEI-TL/Control/src/dynamixel.h
 unistd.h
 -
 stdio.h
 -
 
-/home/luiz/RoboFEI-TL/Control/src/andar_marchando.cpp
+/home/fei/RoboFEI-TL/Control/src/andar_marchando.cpp
 dynamixel.h
 -
 unistd.h
 -
 
-/home/luiz/RoboFEI-TL/Control/src/chute.cpp
+/home/fei/RoboFEI-TL/Control/src/chute.cpp
 dynamixel.h
 -
 unistd.h
@@ -52,11 +52,11 @@ unistd.h
 stdio.h
 -
 
-/home/luiz/RoboFEI-TL/Control/src/desligar_servos.cpp
+/home/fei/RoboFEI-TL/Control/src/desligar_servos.cpp
 dynamixel.h
 -
 
-/home/luiz/RoboFEI-TL/Control/src/espera_mov.cpp
+/home/fei/RoboFEI-TL/Control/src/espera_mov.cpp
 stdio.h
 -
 dynamixel.h
@@ -64,9 +64,9 @@ dynamixel.h
 unistd.h
 -
 blackboard.h
-/home/luiz/RoboFEI-TL/Control/src/blackboard.h
+/home/fei/RoboFEI-TL/Control/src/blackboard.h
 
-/home/luiz/RoboFEI-TL/Control/src/greetings.cpp
+/home/fei/RoboFEI-TL/Control/src/greetings.cpp
 dynamixel.h
 -
 math.h
@@ -76,45 +76,45 @@ cmath
 unistd.h
 -
 
-/home/luiz/RoboFEI-TL/Control/src/levantar_de_costas.cpp
+/home/fei/RoboFEI-TL/Control/src/levantar_de_costas.cpp
 dynamixel.h
 -
 unistd.h
 -
 
-/home/luiz/RoboFEI-TL/Control/src/levantar_de_frente.cpp
+/home/fei/RoboFEI-TL/Control/src/levantar_de_frente.cpp
 dynamixel.h
 -
 unistd.h
 -
 
-/home/luiz/RoboFEI-TL/Control/src/ql.cpp
+/home/fei/RoboFEI-TL/Control/src/ql.cpp
 cstdlib
 -
 ql.h
-/home/luiz/RoboFEI-TL/Control/src/ql.h
+/home/fei/RoboFEI-TL/Control/src/ql.h
 stdio.h
 -
 time.h
 -
 
-/home/luiz/RoboFEI-TL/Control/src/ql.h
+/home/fei/RoboFEI-TL/Control/src/ql.h
 random
 -
 
-/home/luiz/RoboFEI-TL/Control/src/roboereto.cpp
+/home/fei/RoboFEI-TL/Control/src/roboereto.cpp
 dynamixel.h
 -
 
-/home/luiz/RoboFEI-TL/Control/src/swing.cpp
+/home/fei/RoboFEI-TL/Control/src/swing.cpp
 dynamixel.h
-/home/luiz/RoboFEI-TL/Control/src/dynamixel.h
+/home/fei/RoboFEI-TL/Control/src/dynamixel.h
 unistd.h
 -
 stdio.h
 -
 
-/home/luiz/RoboFEI-TL/Control/src/virar.cpp
+/home/fei/RoboFEI-TL/Control/src/virar.cpp
 dynamixel.h
 -
 unistd.h

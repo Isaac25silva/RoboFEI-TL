@@ -34,9 +34,9 @@ string
 um7/firmware_registers.h
 ../IMU/include/um7/um7/firmware_registers.h
 
-/home/luiz/RoboFEI-TL/IMU/src/comms.cpp
+/home/fei/RoboFEI-TL/IMU/src/comms.cpp
 um7/comms.h
-/home/luiz/RoboFEI-TL/IMU/src/um7/comms.h
+/home/fei/RoboFEI-TL/IMU/src/um7/comms.h
 arpa/inet.h
 -
 boost/algorithm/string/predicate.hpp
@@ -46,7 +46,7 @@ boost/foreach.hpp
 string
 -
 serial/serial.h
-/home/luiz/RoboFEI-TL/IMU/src/serial/serial.h
+/home/fei/RoboFEI-TL/IMU/src/serial/serial.h
 um7/registers.h
-/home/luiz/RoboFEI-TL/IMU/src/um7/registers.h
+/home/fei/RoboFEI-TL/IMU/src/um7/registers.h
 

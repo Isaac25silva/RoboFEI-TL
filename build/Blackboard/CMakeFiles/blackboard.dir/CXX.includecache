@@ -8,7 +8,7 @@
 
 ../Blackboard/include/blackboard.h
 
-/home/luiz/RoboFEI-TL/Blackboard/src/blackboard.cpp
+/home/fei/RoboFEI-TL/Blackboard/src/blackboard.cpp
 stdio.h
 -
 unistd.h
@@ -20,5 +20,5 @@ sys/ipc.h
 sys/shm.h
 -
 blackboard.h
-/home/luiz/RoboFEI-TL/Blackboard/src/blackboard.h
+/home/fei/RoboFEI-TL/Blackboard/src/blackboard.h
 

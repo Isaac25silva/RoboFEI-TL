@@ -667,7 +667,7 @@ void le_arquivo_casos()
 	
 	FILE *arq;
 	//arq=fopen("/home/fei/RoboFEI-TL/casos.txt", "r"); //
-	arq=fopen("/home/fei/RoboFEI-TL/casos.txt", "r");
+	arq=fopen("./casos.txt", "r");
 	fgets (linha, MAX_LEN, arq);
 	///cout<<"saiu1"<<endl;
 	

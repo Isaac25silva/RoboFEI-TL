@@ -8,4 +8,4 @@ IMU/CMakeFiles/imu.dir/src/imu.cpp.o
  ../IMU/include/um7/comms.h
  ../IMU/include/um7/firmware_registers.h
  ../IMU/include/um7/registers.h
- /home/luiz/RoboFEI-TL/IMU/src/imu.cpp
+ /home/fei/RoboFEI-TL/IMU/src/imu.cpp

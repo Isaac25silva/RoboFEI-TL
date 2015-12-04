@@ -62,7 +62,7 @@ string
 um7/firmware_registers.h
 ../IMU/include/um7/um7/firmware_registers.h
 
-/home/luiz/RoboFEI-TL/IMU/src/imu.cpp
+/home/fei/RoboFEI-TL/IMU/src/imu.cpp
 string
 -
 iostream
@@ -74,9 +74,9 @@ blackboard.h
 serial.h
 -
 um7/comms.h
-/home/luiz/RoboFEI-TL/IMU/src/um7/comms.h
+/home/fei/RoboFEI-TL/IMU/src/um7/comms.h
 um7/registers.h
-/home/luiz/RoboFEI-TL/IMU/src/um7/registers.h
+/home/fei/RoboFEI-TL/IMU/src/um7/registers.h
 string
 -
 

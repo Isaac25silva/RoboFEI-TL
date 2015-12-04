@@ -35,11 +35,14 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
+# Escaping for special characters.
+EQUALS = =
+
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/luiz/RoboFEI-TL
+CMAKE_SOURCE_DIR = /home/fei/RoboFEI-TL
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/luiz/RoboFEI-TL/build
+CMAKE_BINARY_DIR = /home/fei/RoboFEI-TL/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -107,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/luiz/RoboFEI-TL/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/luiz/RoboFEI-TL/build/CMakeFiles /home/luiz/RoboFEI-TL/build/Blackboard/CMakeFiles/progress.marks
-	cd /home/luiz/RoboFEI-TL/build && $(MAKE) -f CMakeFiles/Makefile2 Blackboard/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/luiz/RoboFEI-TL/build/CMakeFiles 0
+	cd /home/fei/RoboFEI-TL/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/fei/RoboFEI-TL/build/CMakeFiles /home/fei/RoboFEI-TL/build/Blackboard/CMakeFiles/progress.marks
+	cd /home/fei/RoboFEI-TL/build && $(MAKE) -f CMakeFiles/Makefile2 Blackboard/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/fei/RoboFEI-TL/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/luiz/RoboFEI-TL/build && $(MAKE) -f CMakeFiles/Makefile2 Blackboard/clean
+	cd /home/fei/RoboFEI-TL/build && $(MAKE) -f CMakeFiles/Makefile2 Blackboard/clean
 .PHONY : clean
 
 # The main clean target
@@ -123,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/luiz/RoboFEI-TL/build && $(MAKE) -f CMakeFiles/Makefile2 Blackboard/preinstall
+	cd /home/fei/RoboFEI-TL/build && $(MAKE) -f CMakeFiles/Makefile2 Blackboard/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/luiz/RoboFEI-TL/build && $(MAKE) -f CMakeFiles/Makefile2 Blackboard/preinstall
+	cd /home/fei/RoboFEI-TL/build && $(MAKE) -f CMakeFiles/Makefile2 Blackboard/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/luiz/RoboFEI-TL/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/fei/RoboFEI-TL/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 Blackboard/CMakeFiles/blackboard.dir/rule:
-	cd /home/luiz/RoboFEI-TL/build && $(MAKE) -f CMakeFiles/Makefile2 Blackboard/CMakeFiles/blackboard.dir/rule
+	cd /home/fei/RoboFEI-TL/build && $(MAKE) -f CMakeFiles/Makefile2 Blackboard/CMakeFiles/blackboard.dir/rule
 .PHONY : Blackboard/CMakeFiles/blackboard.dir/rule
 
 # Convenience name for target.
@@ -147,7 +150,7 @@ blackboard: Blackboard/CMakeFiles/blackboard.dir/rule
 
 # fast build rule for target.
 blackboard/fast:
-	cd /home/luiz/RoboFEI-TL/build && $(MAKE) -f Blackboard/CMakeFiles/blackboard.dir/build.make Blackboard/CMakeFiles/blackboard.dir/build
+	cd /home/fei/RoboFEI-TL/build && $(MAKE) -f Blackboard/CMakeFiles/blackboard.dir/build.make Blackboard/CMakeFiles/blackboard.dir/build
 .PHONY : blackboard/fast
 
 src/blackboard.o: src/blackboard.cpp.o
@@ -155,7 +158,7 @@ src/blackboard.o: src/blackboard.cpp.o
 
 # target to build an object file
 src/blackboard.cpp.o:
-	cd /home/luiz/RoboFEI-TL/build && $(MAKE) -f Blackboard/CMakeFiles/blackboard.dir/build.make Blackboard/CMakeFiles/blackboard.dir/src/blackboard.cpp.o
+	cd /home/fei/RoboFEI-TL/build && $(MAKE) -f Blackboard/CMakeFiles/blackboard.dir/build.make Blackboard/CMakeFiles/blackboard.dir/src/blackboard.cpp.o
 .PHONY : src/blackboard.cpp.o
 
 src/blackboard.i: src/blackboard.cpp.i
@@ -163,7 +166,7 @@ src/blackboard.i: src/blackboard.cpp.i
 
 # target to preprocess a source file
 src/blackboard.cpp.i:
-	cd /home/luiz/RoboFEI-TL/build && $(MAKE) -f Blackboard/CMakeFiles/blackboard.dir/build.make Blackboard/CMakeFiles/blackboard.dir/src/blackboard.cpp.i
+	cd /home/fei/RoboFEI-TL/build && $(MAKE) -f Blackboard/CMakeFiles/blackboard.dir/build.make Blackboard/CMakeFiles/blackboard.dir/src/blackboard.cpp.i
 .PHONY : src/blackboard.cpp.i
 
 src/blackboard.s: src/blackboard.cpp.s
@@ -171,7 +174,7 @@ src/blackboard.s: src/blackboard.cpp.s
 
 # target to generate assembly for a file
 src/blackboard.cpp.s:
-	cd /home/luiz/RoboFEI-TL/build && $(MAKE) -f Blackboard/CMakeFiles/blackboard.dir/build.make Blackboard/CMakeFiles/blackboard.dir/src/blackboard.cpp.s
+	cd /home/fei/RoboFEI-TL/build && $(MAKE) -f Blackboard/CMakeFiles/blackboard.dir/build.make Blackboard/CMakeFiles/blackboard.dir/src/blackboard.cpp.s
 .PHONY : src/blackboard.cpp.s
 
 # Help Target
@@ -201,6 +204,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/luiz/RoboFEI-TL/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/fei/RoboFEI-TL/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
