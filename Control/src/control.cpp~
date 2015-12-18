@@ -217,10 +217,10 @@ while(1) //inicia o loop do programa main-------------------------------------
      srand (time(NULL));
 
 //--------------------Inicie o programa abrindo o arquivo ou aleatorio---------------------------------
-//passos = openFiletoGetQvalueVector(Episodio);//abre o arquivo salvo e passa os valores para Qvalue
+passos = openFiletoGetQvalueVector(Episodio);//abre o arquivo salvo e passa os valores para Qvalue
 //esta funcao inicializa os valores de Q com valores aleatorio
-init_qvalues();
-passos=0;
+//init_qvalues();
+//passos=0;
 //-----------------------------------------------------------------------------------------------------
 
 
@@ -748,26 +748,40 @@ char *extraiDado (char *buffer, char *temp)
  void similaridade(float AnguloQuadril, int estado)
 {
 
-	double fatorsimilaridade = 0.5;
+	double fatorsimilaridade = 1;
 	double valorSimilaridade = 0;
 	int valorAcao = 0;
-
-	//CASOS_tetha2[i] = valor quadril
+    double Anguloescolhido=0;
    
 
   for (int i = 0; i < CASOS_USADOS; ++i)
 	{
-		//distancia local generica.
-		valorSimilaridade = CASOS_tetha2[i]- AnguloQuadril;
+	
+		valorSimilaridade = fabs(CASOS_tetha2[i])- fabs(AnguloQuadril);
 
-                 if(valorSimilaridade < fatorsimilaridade)
-			{valorAcao=CASOS_acao[i];}
+        if(valorSimilaridade < fatorsimilaridade) {Anguloescolhido=CASOS_tetha2[i];valorAcao=CASOS_acao[i];}
 
 	}
 
-	if(valorAcao==1)heuristic[estado][0]=1000;
-	else if(valorAcao==2)heuristic[estado][1]=1000;
-	//else if(valorAcao==2)heuristic[estado][0]=1;  //arrumar
+
+       if(valorAcao==1)heuristic[estado][0]=100;
+       else if(valorAcao==2)heuristic[estado][1]=100;
+
+        cout<<"Angulo Robo: "<<AnguloQuadril<<" Angulo Caso: "<<Anguloescolhido<<" acao escolhida: "<<valorAcao<<endl;
+
+    /*
+     //Valores das heurísticas----------------------
+       if(x<30)
+       {
+           heuristic[x][0]=0;
+           heuristic[x][1]=10;
+       }
+       else
+       {
+           heuristic[x][0]=10;
+           heuristic[x][1]=0;
+       }*/
+
 
 }
 
