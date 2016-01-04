@@ -217,10 +217,10 @@ while(1) //inicia o loop do programa main-------------------------------------
      srand (time(NULL));
 
 //--------------------Inicie o programa abrindo o arquivo ou aleatorio---------------------------------
-passos = openFiletoGetQvalueVector(Episodio);//abre o arquivo salvo e passa os valores para Qvalue
+//passos = openFiletoGetQvalueVector(Episodio);//abre o arquivo salvo e passa os valores para Qvalue
 //esta funcao inicializa os valores de Q com valores aleatorio
-//init_qvalues();
-//passos=0;
+init_qvalues();
+passos=0;
 //-----------------------------------------------------------------------------------------------------
 
 
@@ -353,10 +353,10 @@ do
     
         //vária de 0 a 1024 corresponde de 0 a 300 graus
         // cada valor do encoder = 0,29 graus.
-        int decoderM=dxl_read_word( ServoBalanco1, P_PRESENT_POSITION_L); //peguei so um motor
+    int decoderM=dxl_read_word( ServoBalanco1, P_PRESENT_POSITION_L); //peguei so um motor
 	float anguloM=0;
 	anguloM=decoderM*0,29;
-        anguloM=robo_para_caso(anguloM);
+    anguloM=robo_para_caso(anguloM);
 	similaridade(anguloM,estadoNovo); //procura na base de casos
 
 	//**************************************************
@@ -681,7 +681,7 @@ void le_arquivo_casos()
 		p = extraiDado (p, temp); //pega o P:
                 //cout<<"P: "<<p<<endl;
 		//printf("%s ",temp);
-		//p = extraiDado (p, temp); //pega P:
+		p = extraiDado (p, temp); //pega P:
 		//cout<<"P "<<p<<endl;
 		p = extraiDado (p, temp); //pega 01		
 		CASOS_tetha1[n_casos]=atof(temp);
@@ -699,17 +699,24 @@ void le_arquivo_casos()
 		//cout<<"Acao: "<<p<<endl;
 		
 		p = extraiDado (p, temp);//pega R:
-                //cout<<"Pegou R: "<<p<<endl;
+        //cout<<"Pegou R: "<<p<<endl;
 
 		p = extraiDado (p, temp);// pega o valor de R_AC
-		CASOS_reward_acao[n_casos]=0.1*atof(temp);
+		CASOS_reward_acao[n_casos]=atof(temp);
 		//cout<<"Valor R: "<<p<<endl;
 		
 		//printf("l %d, Valor 1 %f, Valor 2 %f \n",n_casos, CASOS_tetha1[n_casos],CASOS_tetha2[n_casos]=atof(temp));
 		
+		//cout <<"linha "<<n_casos<<" Valor 1 "<<CASOS_tetha1[n_casos]<<" Valor2 "<<CASOS_tetha2[n_casos]<<" Acao"<<CASOS_acao[n_casos]<<" Recomp "<<CASOS_reward_acao[n_casos]<<endl;
+		
+		if(CASOS_acao[n_casos]!=0)
+		{
+		  n_casos++;
+		}
+		
 		fgets (linha, 255, arq);
 		
-		n_casos++;
+		
 		
 
 	}
@@ -718,7 +725,7 @@ void le_arquivo_casos()
 	fclose(arq);
 
 	CASOS_USADOS=n_casos;
-	cout<<"Casos carregado----------"<<endl;
+	//cout<<"Casos carregado----------"<<endl;
 //Teste para ver se estava carregando corretamente os caso mesmo.	
 	
 	/*FILE *run;
@@ -748,24 +755,32 @@ char *extraiDado (char *buffer, char *temp)
  void similaridade(float AnguloQuadril, int estado)
 {
 
-	double fatorsimilaridade = 1;
+	double fatorsimilaridade = 10;
+
 	double valorSimilaridade = 0;
 	int valorAcao = 0;
     double Anguloescolhido=0;
+
+    
+
    
 
   for (int i = 0; i < CASOS_USADOS; ++i)
 	{
 	
-		valorSimilaridade = fabs(CASOS_tetha2[i])- fabs(AnguloQuadril);
+		valorSimilaridade = fabs(CASOS_tetha2[i]) - fabs(AnguloQuadril);
+		//cout<<" similaridade "<< valorSimilaridade<<endl;
+        if(valorSimilaridade < fatorsimilaridade) 
+        {
+        Anguloescolhido=CASOS_tetha2[i];
+        valorAcao=CASOS_acao[i];
+        }
+        
+     }
 
-        if(valorSimilaridade < fatorsimilaridade) {Anguloescolhido=CASOS_tetha2[i];valorAcao=CASOS_acao[i];}
 
-	}
-
-
-       if(valorAcao==1)heuristic[estado][0]=100;
-       else if(valorAcao==2)heuristic[estado][1]=100;
+       if(valorAcao==1)heuristic[estado][0]=10;
+       else if(valorAcao==2)heuristic[estado][1]=10;
 
         cout<<"Angulo Robo: "<<AnguloQuadril<<" Angulo Caso: "<<Anguloescolhido<<" acao escolhida: "<<valorAcao<<endl;
 
