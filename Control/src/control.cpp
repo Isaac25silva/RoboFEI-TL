@@ -667,7 +667,7 @@ void le_arquivo_casos()
 	
 	FILE *arq;
 	//arq=fopen("/home/fei/RoboFEI-TL/casos.txt", "r"); //
-	arq=fopen("./casos.txt", "r");
+	arq=fopen("/home/fei/RoboFEI-TL/casos.txt", "r");
 	fgets (linha, MAX_LEN, arq);
 	///cout<<"saiu1"<<endl;
 	
@@ -779,8 +779,8 @@ char *extraiDado (char *buffer, char *temp)
      }
 
 
-       if(valorAcao==1)heuristic[estado][0]=10;
-       else if(valorAcao==2)heuristic[estado][1]=10;
+       if(valorAcao==1)heuristic[estado][0]=100;
+       else if(valorAcao==2)heuristic[estado][1]=100;
 
        // cout<<"Angulo Robo: "<<AnguloQuadril<<" Angulo Caso: "<<Anguloescolhido<<" acao escolhida: "<<valorAcao<<endl;
 
