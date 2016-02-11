@@ -256,7 +256,7 @@ for(int x=0;x<121;x++)
 	}
 	//---------------------------------------------
 }
-
+    std::cout<<"Inicio do carregamento dos casos"<<std::endl;
 le_arquivo_casos(); //carrega casos //Luiz
 printf("Casos Carregados !!!..............\n"); //Luiz
 

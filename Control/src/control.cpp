@@ -256,7 +256,7 @@ for(int x=0;x<121;x++)
 	}
 	//---------------------------------------------
 }
-
+    std::cout<<"Inicio do carregamento dos casos"<<std::endl;
 le_arquivo_casos(); //carrega casos //Luiz
 printf("Casos Carregados !!!..............\n"); //Luiz
 
@@ -779,8 +779,8 @@ char *extraiDado (char *buffer, char *temp)
      }
 
 
-       if(valorAcao==1)heuristic[estado][0]=100;
-       else if(valorAcao==2)heuristic[estado][1]=100;
+       if(valorAcao==1)heuristic[estado][1]=100;
+       else if(valorAcao==2)heuristic[estado][0]=100;
 
        // cout<<"Angulo Robo: "<<AnguloQuadril<<" Angulo Caso: "<<Anguloescolhido<<" acao escolhida: "<<valorAcao<<endl;
 
