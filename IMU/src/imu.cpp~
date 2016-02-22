@@ -71,6 +71,8 @@ sudo make install
 #include <iostream>
 #include <stdlib.h>
 #include <blackboard.h>
+#include <math.h>
+#include <sys/time.h>
 
 //#include "geometry_msgs/Vector3Stamped.h"
 //#include "ros/ros.h"
@@ -89,6 +91,14 @@ const char VERSION[10] = "0.0.2";   // um7_driver version
 // Don't try to be too clever. Arrival of this message triggers
 // us to publish everything we have.
 const uint8_t TRIGGER_PACKET = DREG_EULER_PHI_THETA;
+
+double ruido=0;
+double sum_Xg=0;
+double sum_Yg=0;
+double sum_Zg=0;
+int tru_sum_Zg=0;
+double yaw=0;
+struct timeval now, old;
 
 /**
  * Function generalizes the process of writing an XYZ vector into consecutive
@@ -152,21 +162,21 @@ void configureSensor(um7::Comms* sensor)
       throw std::runtime_error("Unable to set CREG_COM_SETTINGS.");
     }
 
-    uint32_t raw_rate = (20 << RATE2_ALL_RAW_START);
+    uint32_t raw_rate = (255 << RATE2_ALL_RAW_START);
     r.comrate2.set(0, raw_rate);
     if (!sensor->sendWaitAck(r.comrate2))
     {
       throw std::runtime_error("Unable to set CREG_COM_RATES2.");
     }
 
-    uint32_t proc_rate = (20 << RATE4_ALL_PROC_START);
+    uint32_t proc_rate = (255 << RATE4_ALL_PROC_START);
     r.comrate4.set(0, proc_rate);
     if (!sensor->sendWaitAck(r.comrate4))
     {
       throw std::runtime_error("Unable to set CREG_COM_RATES4.");
     }
 
-    uint32_t misc_rate = (20 << RATE5_EULER_START) | (20 << RATE5_QUAT_START);
+    uint32_t misc_rate = (255 << RATE5_EULER_START) | (255 << RATE5_QUAT_START);
     r.comrate5.set(0, misc_rate);
     if (!sensor->sendWaitAck(r.comrate5))
     {
@@ -185,7 +195,7 @@ void configureSensor(um7::Comms* sensor)
   uint32_t misc_config_reg = 0;  // initialize all options off
 
   // Optionally disable mag updates in the sensor's EKF.
-  bool mag_updates;
+  bool mag_updates=false;
   //ros::param::param<bool>("~mag_updates", mag_updates, true);
   if (mag_updates)
   {
@@ -197,7 +207,7 @@ void configureSensor(um7::Comms* sensor)
   }
 
   // Optionally enable quaternion mode .
-  bool quat_mode;
+  bool quat_mode=false;
   //ros::param::param<bool>("~quat_mode", quat_mode, true);
   if (quat_mode)
   {
@@ -216,7 +226,7 @@ void configureSensor(um7::Comms* sensor)
   }
 
   // Optionally disable performing a zero gyros command on driver startup.
-  bool zero_gyros;
+  bool zero_gyros=true;
   //ros::param::param<bool>("~zero_gyros", zero_gyros, true);
   if (zero_gyros) sendCommand(sensor, r.cmd_zero_gyros, "zero gyroscopes");
 }
@@ -311,6 +321,7 @@ void publishMsgs(um7::Registers& r)
 //    temp_pub.publish(temp_msg);
 //  }
 
+
     IMU_GYRO_X = r.gyro.get_scaled(1)/10;
     IMU_GYRO_Y = r.gyro.get_scaled(0)/10;
     IMU_GYRO_Z = -r.gyro.get_scaled(2)/10;
@@ -323,14 +334,39 @@ void publishMsgs(um7::Registers& r)
     IMU_COMPASS_Y = r.mag.get_scaled(0);
     IMU_COMPASS_Z = -r.mag.get_scaled(2);
 
-    IMU_EULER_X = r.euler.get_scaled(1);
-    IMU_EULER_Y = r.euler.get_scaled(0);
+    IMU_EULER_X = r.euler.get_scaled(0);
+    IMU_EULER_Y = r.euler.get_scaled(1);
     IMU_EULER_Z = -r.euler.get_scaled(2);
 
-    IMU_QUAT_X = r.quat.get_scaled(2);
-    IMU_QUAT_Y = r.quat.get_scaled(1);
-    IMU_QUAT_Z = -r.quat.get_scaled(3);
+    ruido+=.00001;
 
+//    gettimeofday(&now, NULL);
+//    tru_sum_Zg= IMU_GYRO_Z*100;
+
+//    sum_Xg= sum_Xg + IMU_GYRO_X;
+//    sum_Yg= sum_Yg + IMU_GYRO_Y;
+    sum_Zg= sum_Zg + IMU_GYRO_Z;
+//    if (now.tv_usec > old.tv_usec)
+//        sum_Zg= sum_Zg + IMU_GYRO_Z*((now.tv_usec - old.tv_usec)/10000.0);
+//    else
+//        sum_Zg= sum_Zg + IMU_GYRO_Z*((now.tv_usec - old.tv_usec + 10000)/10000.0);
+//    old = now;
+    
+//  X na verdade eh o Y    
+    yaw = (IMU_EULER_Z+sum_Zg)*180/M_PI;
+
+    
+
+//    // IMU outputs [w,x,y,z], convert to [x,y,z,w]
+//    imu_msg.orientation.x =  r.quat.get_scaled(1);
+//    imu_msg.orientation.y = -r.quat.get_scaled(2);
+//    imu_msg.orientation.z = -r.quat.get_scaled(3);
+//    imu_msg.orientation.w = r.quat.get_scaled(0);
+    IMU_QUAT_X = r.quat.get_scaled(1);
+    IMU_QUAT_Y = r.quat.get_scaled(2);
+    IMU_QUAT_Z = -r.quat.get_scaled(3);
+    //IMU_QUAT_W = -r.quat.get_scaled(0);
+    
 }
 
 
@@ -341,6 +377,8 @@ int main(int argc, char **argv)
 {
   //ros::init(argc, argv, "um7_driver");
 
+    gettimeofday(&now, NULL);
+    gettimeofday(&old, NULL);
     using_shared_memory();
 
   // Load parameters from private node handle.
@@ -419,12 +457,12 @@ int main(int argc, char **argv)
             contador++;
             //--------------------------------------------------------------------
 
-            if(med_accel_z>-0.70) // Identifica se o robô esta caido ou em pé
+            if(med_accel_z<-0.70) // Identifica se o robô esta caido ou em pé
                 IMU_STATE = 0; // Robo caido
             else
                 IMU_STATE = 1; // Robo em pé
 
-            if(t>20)
+            if(t>40)
             {
 
             std::cout<<"Robo caido = "<<std::fixed<<IMU_STATE<<std::endl;
@@ -446,6 +484,9 @@ int main(int argc, char **argv)
             std::cout<<"Euler_x = "<<std::fixed<<IMU_EULER_X<<std::endl;
             std::cout<<"Euler_y = "<<std::fixed<<IMU_EULER_Y<<std::endl;
             std::cout<<"Euler_z = "<<std::fixed<<IMU_EULER_Z<<std::endl<<std::endl;
+            std::cout<<"Euler_z+= "<<std::fixed<<IMU_EULER_Z-ruido<<std::endl<<std::endl;
+            std::cout<<"sumZ    = "<<std::fixed<<sum_Zg<<std::endl<<std::endl;
+            std::cout<<"Yaw     = "<<std::fixed<<yaw<<std::endl<<std::endl;
             t=0;
             }
             t++;

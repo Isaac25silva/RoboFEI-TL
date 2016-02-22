@@ -343,8 +343,8 @@ do
     //while(1){}
     estadoNovo = estado;
 
-	dxl_write_word(ServoBalanco1, MOVING_SPEED, 600);
-	dxl_write_word(ServoBalanco2, MOVING_SPEED, 600);
+	dxl_write_word(ServoBalanco1, MOVING_SPEED, 700);
+	dxl_write_word(ServoBalanco2, MOVING_SPEED, 700);
     do
     {
         servo_funcionando();
@@ -457,7 +457,7 @@ do
 	//-------------------------------------------------------------------------------
 
 	//---Recebe reforco-----------------------------------------------------------------
-	if( imu_med < -1.008)
+	if( imu_med < -1.0025)
 	{
 
 		//-----Calcula a média novamente para verificar se é um falso positivo
@@ -465,14 +465,14 @@ do
 		for(int x=0; x<32;x++)
 		{
 			imu_soma += IMU_ACCEL_Z;
-			usleep(5000);
+			usleep(4000);
 		}
 		imu_med  = imu_soma / 32;
 		//-------------------------------------------------------
 
 
 		//---Entra para recebe reforco positivo----------------------
-		if( imu_med < -1.007)
+		if( imu_med < -1.002)
 		{
             gettimeofday(&final, NULL); //tempo final
             tmili = (int) (1000 * (final.tv_sec - inicio.tv_sec) + (final.tv_usec - inicio.tv_usec) / 1000);
@@ -639,14 +639,14 @@ void filtro_imu(double 	&imu_med, double &imu_medy)
 	//-----Calcula a média para filtrar ruído da IMU---------------------------------
 	float imu_soma = 0;
 	float imu_somay = 0;
-	for(int x=0; x<25;x++)
+	for(int x=0; x<10;x++)
 	{
 		imu_soma += IMU_ACCEL_Z;
 		imu_somay += IMU_ACCEL_X;
-		usleep(4000);
+		usleep(10000);
 	}
-	imu_med  = imu_soma / 25;
-	imu_medy  = imu_somay / 25;
+	imu_med  = imu_soma / 10;
+	imu_medy  = imu_somay / 10;
 	//-------------------------------------------------------------------------------
 }
 
@@ -778,9 +778,11 @@ char *extraiDado (char *buffer, char *temp)
         
      }
 
-
-       if(valorAcao==1)heuristic[estado][1]=100;
-       else if(valorAcao==2)heuristic[estado][0]=100;
+        if(estado%3==0)
+        {
+           if(valorAcao==1)heuristic[estado][1]=100;
+           else if(valorAcao==2)heuristic[estado][0]=100;
+        }
 
        // cout<<"Angulo Robo: "<<AnguloQuadril<<" Angulo Caso: "<<Anguloescolhido<<" acao escolhida: "<<valorAcao<<endl;
 

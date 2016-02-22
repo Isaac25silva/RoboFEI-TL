@@ -71,6 +71,10 @@ stdlib.h
 -
 blackboard.h
 -
+math.h
+-
+sys/time.h
+-
 serial.h
 -
 um7/comms.h
